@@ -5,3 +5,7 @@ export const createTodo = createAction(
   props<{text: string}>()
 );
 
+export const toggle = createAction(
+  '[TODO] Toggle Todo',
+  props<{id: number}>()
+)
