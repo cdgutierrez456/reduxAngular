@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/app.reducer';
 import { setFilter } from '../../filter/filter.actions';
+import { clearTodos } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-footer',
@@ -26,6 +27,10 @@ export class TodoFooterComponent implements OnInit {
 
   filterSelected(filter: string) {
     this.store.dispatch(setFilter({filter}))
+  }
+
+  clearCompleted() {
+    this.store.dispatch(clearTodos())
   }
 
 }
