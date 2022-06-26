@@ -12,13 +12,16 @@ import { Todo } from '../models/todo.model';
 export class TodoListComponent implements OnInit {
 
   todos: Todo[] = [];
+  actualFilter: string = '';
 
   constructor( private store: Store<AppState> ) { }
 
   ngOnInit(): void {
-
     this.store.select('todos').subscribe((todos) => this.todos = todos)
-
+    this.store.subscribe(state => {
+      this.todos = state.todos;
+      this.actualFilter = state.filter
+    })
   }
 
 }
